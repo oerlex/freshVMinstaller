@@ -2,7 +2,7 @@
 
 #Clone my repo
 cd
-git clone https://github.com/oerlex/myTmuxConfig.git
+git clone https://github.com/oerlex/freshVMinstaller.git
 
 
 #Clean up
