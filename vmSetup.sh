@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #Clone my repo
-cd
-git clone https://github.com/oerlex/freshVMinstaller.git
+#cd
+#git clone https://github.com/oerlex/freshVMinstaller.git
 
 
 #Clean up
@@ -15,13 +15,19 @@ sudo dpkg -r atom
 mkdir ~/programs
 cd ~/programs
 
+# Install Package Manager
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install python3-pip
+sudo apt install snap
+
+
 # Install Go
 wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 go version
-
 
 # Install ffuf
 go get -u github.com/ffuf/ffuf
@@ -39,5 +45,18 @@ sudo dpkg -i atom*.deb
 sudo apt install tmux
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
-cp ~/myTmuxConfig/.tmux.conf ~/.tmux.conf
-cp ~/myTmuxConfig/.tmux.conf.local  ~/.tmux.conf.local
+cp ~/freshVMinstaller/.tmux.conf ~/.tmux.conf
+cp ~/freshVMinstaller/.tmux.conf.local  ~/.tmux.conf.local
+
+# Install MobSF
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+Mobile-Security-Framework-MobSF/setup.sh
+
+
+# Install Android Studio
+sudo snap install --classic android-studio
+
+
+# Install frida+objection
+pip3 install frida-tools
+pip3 install objection
