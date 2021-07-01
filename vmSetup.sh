@@ -68,7 +68,7 @@ pip3 install objection
 apt install exa
 
 curl -s https://api.github.com/repos/Peltoche/lsd/releases/latest \
-| grep "lsd_*_amd64.deb" \
+| grep "browser_download_url.*deb" \
 | cut -d : -f 2,3 \
 | tr -d \" \
 | wget -qi -
