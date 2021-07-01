@@ -61,3 +61,14 @@ sudo snap install --classic android-studio
 # Install frida+objection
 pip3 install frida-tools
 pip3 install objection
+
+
+# Modern Unix
+
+apt install exa
+
+curl -s https://api.github.com/repos/Peltoche/lsd/releases/latest \
+| grep "lsd_*_amd64.deb" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -qi -
