@@ -20,6 +20,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install python3-pip
 sudo apt install snap
+sudo apt -y kali-linux-everything
 
 
 # Install Go
@@ -28,6 +29,10 @@ sudo tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz
 echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 go version
+
+# Install Bloodhound
+sudo apt install bloodhound
+
 
 # Install ffuf
 go get -u github.com/ffuf/ffuf
@@ -41,6 +46,7 @@ curl -s https://api.github.com/repos/atom/atom/releases/latest \
 | wget -qi -
 sudo dpkg -i atom*.deb
 
+
 # Install tmux
 sudo apt install tmux
 git clone https://github.com/gpakosz/.tmux.git
@@ -48,6 +54,7 @@ ln -s -f .tmux/.tmux.conf
 cp ~/freshVMinstaller/.tmux.conf ~/.tmux.conf
 cp ~/freshVMinstaller/.tmux.conf.local  ~/.tmux.conf.local
 tmux source-file ~/.tmux.conf
+
 
 # Install MobSF
 git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
@@ -63,33 +70,25 @@ pip3 install frida-tools
 pip3 install objection
 
 
-# Modern Unix
+# SecLists
+cd /opt
+git clone https://github.com/danielmiessler/SecLists.git
 
-apt install exa
+
+# Windows / AD / Powershell
+
+## Powersploit & PSTools
+cd /opt/
+https://github.com/PowerShellMafia/PowerSploit.git
+mkdir PSTools
+cd PSTools
+wget https://download.sysinternals.com/files/PSTools.zip
+unzip PSTools.zip
 
 
-# Not workin 100%
-curl -s https://api.github.com/repos/Peltoche/lsd/releases/latest \
-| grep "browser_download_url*/lsd_*amd64.*deb" \
-| cut -d : -f 2,3 \
-| tr -d \" \
-| wget -qi -
-
-apt install npm -y
-npm install -g tldr
-apt install fd-find
-apt install httpie
-
-# Not workin 100%
-curl -s https://api.github.com/rs/curlie/releases/latest \
-| grep "browser_download_url*/curlie_*/1.6.0_linux_amd64.*deb" \
-| cut -d : -f 2,3 \
-| tr -d \" \
-| wget -qi -
-
-# Not working 100%
-curl -s https://api.github.com/ogham/dog/releases//latest \
-| grep "browser_download_url*/dog-/*-unknown-linux-gnu.zip" \
+## impacket
+curl -s https://api.github.com/repos/SecureAuthCorp/impacket/releases/latest \
+| grep "browser_download_url.*tar.gz" \
 | cut -d : -f 2,3 \
 | tr -d \" \
 | wget -qi -
