@@ -20,7 +20,6 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install python3-pip
 sudo apt install snap
-sudo apt -y kali-linux-everything
 
 
 # Install Go
